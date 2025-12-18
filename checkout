@@ -1,0 +1,391 @@
+import javafx.scene.control.ComboBox;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.sql.*;
+
+public class checkout {
+    Frame f1;
+    Label l0,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13,l14,l15,l16,l17,l18,l19,l20;
+    TextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18,t19,t20;
+    Connection con;
+    ResultSet rs,rs2;
+    Statement st,st2,st3;
+    JComboBox cb1;
+    String sq1,sq2,sq3,a,b,c,d,e1,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v;
+    Button b1;
+    public checkout()
+    {
+        cb1=new JComboBox<>();
+        f1 = new Frame();
+        f1.setLayout(null);
+        l0=new Label(" Lodge check-out ");
+        t1 = new TextField(20);
+        t2 = new TextField(20);
+        t3 = new TextField(20);
+        t4 = new TextField(20);
+        t5 = new TextField(20);
+        t6 = new TextField(20);
+        t7 = new TextField(20);
+        t8 = new TextField(20);
+        t9 = new TextField(20);
+        t10 = new TextField(20);
+        t11 = new TextField(20);
+        t12 = new TextField(20);
+        t13 = new TextField(20);
+        t14 = new TextField(20);
+        t15 = new TextField(20);
+        t16 = new TextField(20);
+        t17 = new TextField(20);
+        t18 = new TextField(20);
+        t19 = new TextField(20);
+        t20 = new TextField(20);
+
+        l1 = new Label("Customer Id:");
+        l2 = new Label("First Name :");
+        l3 = new Label("Middle Name :");
+        l4 = new Label("Last Name:");
+        l5 = new Label("Father Name:");
+        l6 = new Label("Mother Name:");
+        l7 = new Label("Number:");
+        l8 = new Label("Aadhar No:");
+        l9 = new Label("Pan No:");
+        l10 = new Label("From:");
+        l11 = new Label("Tow:");
+        l12 = new Label("Reason:");
+        l13 = new Label("Room no:");
+        l14 = new Label("Room type:");
+        l15 = new Label("Room Rate:");
+        l16 = new Label("Advance:");
+        l17 = new Label("MDate:");
+        l18 = new Label("out Date:");
+        l19 = new Label("Total Bill:");
+        l20 = new Label("Paid:");
+
+        b1=new Button("save");
+
+        f1.add(l0);
+        f1.add(l1);
+        f1.add(t1);
+        f1.add(l2);
+        f1.add(t2);
+        f1.add(l3);
+        f1.add(t3);
+        f1.add(l4);
+        f1.add(t4);
+        f1.add(l5);
+        f1.add(t5);
+        f1.add(l6);
+        f1.add(t6);
+        f1.add(l7);
+        f1.add(t7);
+        f1.add(l8);
+        f1.add(t8);
+        f1.add(l9);
+        f1.add(t9);
+        f1.add(l10);
+        f1.add(t10);
+        f1.add(l11);
+        f1.add(t11);
+        f1.add(l12);
+        f1.add(t12);
+        f1.add(l13);
+        f1.add(cb1);
+
+
+        f1.add(l14);
+        f1.add(t14);
+        f1.add(l15);
+        f1.add(t15);
+        f1.add(l16);
+        f1.add(t16);
+        f1.add(l17);
+        f1.add(t17);
+        f1.add(l18);
+        f1.add(t18);
+        f1.add(l19);
+        f1.add(t19);
+        f1.add(l20);
+        f1.add(t20);
+        f1.add(b1);
+        f1.setSize(1200, 1200);
+        f1.setVisible(true);
+
+        l0.setBounds(350,55,300,40);
+
+        l1.setBounds(60,130,100,20);
+        t1.setBounds(160,130,200,30);
+
+        l2.setBounds(410,130,70,20);
+        t2.setBounds(505,130,200,30);
+
+        l3.setBounds(760,130,100,20);
+        t3.setBounds(860,130,200,30);
+
+
+        l4.setBounds(60,200,100,20);
+        t4.setBounds(160,200,200,30);
+
+
+        l5.setBounds(409,200,100,20);
+        t5.setBounds(509,197,200,30);
+
+
+        l6.setBounds(760,200,100,20);
+        t6.setBounds(860,200,200,30);
+
+
+        l7.setBounds(60,270,100,20);
+        t7.setBounds(160,270,200,30);
+
+
+        l8.setBounds(409,270,100,20);
+        t8.setBounds(509,270,200,30);
+
+        l9.setBounds(780,270,70,20);
+        t9.setBounds(860,270,200,30);
+
+
+        l10.setBounds(60,340,100,20);
+        t10.setBounds(160,340,200,30);
+
+
+        l11.setBounds(409,340,100,20);
+        t11.setBounds(509,340,200,30);
+
+
+        l12.setBounds(780,340,80,20);
+        t12.setBounds(864,340,200,30);
+
+
+        l13.setBounds(60,400,100,20);
+        cb1.setBounds(160,400,200,30);
+
+
+
+        l14.setBounds(409,400,100,20);
+        t14.setBounds(509,400,200,30);
+
+
+        l15.setBounds(780,400,80,20);
+        t15.setBounds(865,400,200,30);
+
+
+        l16.setBounds(60,480,100,20);
+        t16.setBounds(160,480,200,30);
+
+
+        l17.setBounds(409,480,100,20);
+        t17.setBounds(509,480,200,30);
+
+        l18.setBounds(780,480,80,20);
+        t18.setBounds(865,480,200,30);
+
+        l19.setBounds(60,560,80,20);
+        t19.setBounds(160,550,200,30);
+
+        l20.setBounds(409,560,80,20);
+        t20.setBounds(509,550,200,30);
+        b1.setBounds(370,680,300,60);
+        cb1.setBounds(160,410,200,30);
+
+
+        Font ff =new Font("Arial", Font.BOLD,34);
+        l0.setFont(ff);
+
+        Font font =new Font("Arial", Font.BOLD,13);
+        l1.setFont(font);
+        l2.setFont(font);
+        l3.setFont(font);
+        l4.setFont(font);
+        l5.setFont(font);
+        l6.setFont(font);
+        l7.setFont(font);
+        l8.setFont(font);
+        l9.setFont(font);
+        l10.setFont(font);
+        l11.setFont(font);
+        l12.setFont(font);
+        l13.setFont(font);
+        l14.setFont(font);
+        l15.setFont(font);
+        l16.setFont(font);
+        l17.setFont(font);
+        l18.setFont(font);
+        l19.setFont(font);
+        l20.setFont(font);
+
+        t1.setFont(font);
+        t2.setFont(font);
+        t3.setFont(font);
+        t4.setFont(font);
+        t5.setFont(font);
+        t6.setFont(font);
+        t7.setFont(font);
+        t8.setFont(font);
+        t9.setFont(font);
+        t10.setFont(font);
+        t11.setFont(font);
+        t12.setFont(font);
+        t13.setFont(font);
+        t14.setFont(font);
+        t15.setFont(font);
+        t16.setFont(font);
+        t17.setFont(font);
+        t18.setFont(font);
+        t19.setFont(font);
+        t20.setFont(font);
+        b1.setFont(font);
+        class RectCanvas extends Canvas
+        {
+            @Override
+            public void paint(Graphics g)
+            {
+                super.paint(g);
+                Graphics2D g2=(Graphics2D)g;
+                BasicStroke thick= new BasicStroke(15.0f);
+                g2.setStroke(thick);
+                g2.setColor(Color.RED);
+                g2.drawRect(10, 10, 1100, 700);
+            }
+        }
+        RectCanvas canvas = new RectCanvas();
+        canvas.setBounds(6, 40, 1200,740);
+        f1.add(canvas);
+
+
+
+        try {
+            con = DriverManager.getConnection("JDBC:mysql://localhost:3306/lodge", "root", "root");
+        } catch (
+                SQLException ee) {
+            System.out.println(ee);
+        }
+        cb1.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+
+                cb1.removeAllItems();
+                try {
+                    sq1 = "select * from check_in";
+
+                    st = con.createStatement();
+
+                    rs = st.executeQuery(sq1);
+                    while (rs.next()) {
+                        cb1.addItem(String.valueOf(rs.getString("room_no")));
+
+                    }
+
+
+                } catch (SQLException rrrr) {
+                    System.out.println(rrrr);
+                }
+
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+
+            }
+        });
+        cb1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                try {
+                    String xx = (String) cb1.getSelectedItem();
+                    st2 = con.createStatement();
+                    sq2="select * from check_in where room_no='"+xx+"'";
+                    rs2= st2.executeQuery(sq2);
+                    rs2.next();
+                    t1.setText(rs2.getString("c_id"));
+                    t2.setText(rs2.getString("cf_name"));
+                    t3.setText(rs2.getString("cm_name"));
+                    t4.setText(rs2.getString("cl_name"));
+                    t5.setText(rs2.getString("cfa_name"));
+                    t6.setText(rs2.getString("cmo_name"));
+                    t7.setText(rs2.getString("c_no1"));
+                    t8.setText(rs2.getString("aadhar_no"));
+                    t9.setText(rs2.getString("pan_no"));
+                    t10.setText(rs2.getString("fromw"));
+                    t11.setText(rs2.getString("tow"));
+                    t12.setText(rs2.getString("reason"));
+                    t13.setText(rs2.getString("room_no"));
+                    t14.setText(rs2.getString("room_type"));
+                    t15.setText(rs2.getString("rate"));
+                    t16.setText(rs2.getString("advance"));
+                    t17.setText(rs2.getString("m_date"));
+
+                    t1.setEditable(false);
+                    t2.setEditable(false);
+                    t3.setEditable(false);
+                    t4.setEditable(false);
+                    t5.setEditable(false);
+                    t6.setEditable(false);
+                    t7.setEditable(false);
+                    t8.setEditable(false);
+                    t9.setEditable(false);
+                    t10.setEditable(false);
+                    t11.setEditable(false);
+                    t12.setEditable(false);
+                    t13.setEditable(false);
+                    t14.setEditable(false);
+                    t15.setEditable(false);
+                    t16.setEditable(false);
+                    t17.setEditable(false);
+
+
+                } catch (SQLException ex) {
+                    System.out.println(ex);
+                }
+            }
+        });
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                a=t1.getText();
+                c=t2.getText();
+                d=t3.getText();
+                e1=t4.getText();
+                f=t5.getText();
+                 g=t6.getText();
+                 h=t7.getText();
+                 i=t8.getText();
+                 j=t9.getText();
+                 l=t10.getText();
+                 m=t11.getText();
+                 n=t12.getText();
+                o=t13.getText();
+                 p=t14.getText();
+                q=t15.getText();
+                 r=t16.getText();
+                s=t17.getText();
+                t=t18.getText();
+                u=t19.getText();
+                v=t20.getText();
+                sq3 = "insert into check_out(c_id,cf_name,cm_name,cl_name,cfa_name,cmo_name,c_no1,aadhar_no,pan_no,fromw,tow,reason,room_type,room_no,rate,advance,out_date,M_date,total_bill,paid)value('"+a+"','"+c+"','"+d+"','"+e1+"','"+f+"','"+g+"','"+h+"','"+i+"','"+j+"','"+l+"','"+m+"','"+n+"','"+o+"','"+p+"','"+q+"','"+r+"','"+s+"','"+t+"','"+u+"','"+v+"');";
+                try {
+                    st3 = con.createStatement();
+
+                    st3.executeUpdate(sq3);
+                } catch (SQLException ex)
+                {
+                    System.out.println(ex);
+                }
+
+                JOptionPane.showMessageDialog(null, "record saved successfull");
+
+            }
+        });
+
+    }
+
+    public static void main(String[] args) {
+        checkout hk=new checkout();
+    }
+}
